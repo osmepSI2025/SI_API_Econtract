@@ -1,0 +1,18 @@
+[
+  {
+    "ContainingType": "SME_API_Econtract.Controllers.EcontractController",
+    "Method": "GetProjectByCode",
+    "RelativePath": "api/SYS-E-CONTRACT/Project/{projectcode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectcode",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

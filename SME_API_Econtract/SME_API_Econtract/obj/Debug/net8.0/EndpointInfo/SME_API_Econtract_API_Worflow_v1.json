@@ -1,0 +1,37 @@
+{
+  "x-generator": "NSwag v13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v10.0.0.0))",
+  "swagger": "2.0",
+  "info": {
+    "title": "API SME Worflow",
+    "description": "API documentation using Swagger 2.0",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/SYS-E-CONTRACT/Project/{projectcode}": {
+      "get": {
+        "tags": [
+          "Econtract"
+        ],
+        "operationId": "Econtract_GetProjectByCode",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "projectcode",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    }
+  }
+}

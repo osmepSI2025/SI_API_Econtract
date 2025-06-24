@@ -1,0 +1,33 @@
+{
+  "responseCode": "200",
+  "responseMsg": "OK",
+  "data": [
+    {
+      "projectCode": "PRJ-2567-001",
+      "projectName": "พัฒนาแอปพลิเคชันส่งเสริมการตลาด",
+      "contractingPartyName": "บริษัท สมาร์ทโซลูชัน จำกัด",
+      "startDate": "2024-05-01",
+      "projectBudget": "1,500,000",
+      "endDate": "2024-12-31",
+      "allocatedBudget": "1,200,000",
+      "installments": "3",
+      "installmentsDetails": [
+        {
+          "installmentsNo": 1,
+          "installmentsDate": "2024-06-30",
+          "amount": 400000
+        },
+        {
+          "installmentsNo": 2,
+          "installmentsDate": "2024-09-30",
+          "amount": 400000
+        },
+        {
+          "installmentsNo": 3,
+          "installmentsDate": "2024-12-31",
+          "amount": 400000
+        }
+      ]
+    }
+  ]
+}

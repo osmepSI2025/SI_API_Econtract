@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "K684n23+BdgrGUTww37VmioW9ibPq2quWiw2R5MW9iU=",
+  "Source": "SME_API_Econtract",
+  "BasePath": "_content/SME_API_Econtract",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

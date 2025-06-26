@@ -81,7 +81,7 @@ public class MProjectContractService
         }
     }
 
-    public async Task BatchEndOfDay_MProjectContract(searchProjectData xmodel)
+    public async Task BatchEndOfDay_MProjectContract(string xmodel)
     {
         var options = new JsonSerializerOptions
         {
@@ -197,7 +197,7 @@ public class MProjectContractService
 
             if (Ldata == null || !Ldata.Any())
             {
-                await BatchEndOfDay_MProjectContract(xmodel);
+                await BatchEndOfDay_MProjectContract(xmodel.ProjectCode);
 
                 var Ldata2 = await _repository.GetAllAsyncSearch_MProjectContract(xmodel);
                 if (Ldata2 == null || !Ldata2.Any())

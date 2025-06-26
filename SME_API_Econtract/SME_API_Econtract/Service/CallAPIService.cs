@@ -218,7 +218,7 @@ namespace SME_API_Econtract.Services
                 }
                 else 
                 {
-                    requestJson = url;
+                    requestJson = url.Replace("{projectcode}", xdata.ToString());
                 }
               
 

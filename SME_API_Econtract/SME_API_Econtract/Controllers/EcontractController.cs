@@ -36,7 +36,7 @@ namespace SME_API_Econtract.Controllers
         public async Task<IActionResult> GetProjectByCodeBatch()
         {
             searchProjectData model = new searchProjectData();
-                 await _projectContractService.BatchEndOfDay_MProjectContract(model);
+                 await _projectContractService.BatchEndOfDay_MProjectContract("0");
              
                 return Ok();
           

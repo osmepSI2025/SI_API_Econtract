@@ -225,7 +225,7 @@ namespace SME_API_Econtract.Services
                 // Create request
                 var request = new HttpRequestMessage(
                     apiModels.MethodType == "POST" ? HttpMethod.Post : HttpMethod.Get,
-                    url
+                    requestJson
                 );
 
                 // Set Authorization Headers

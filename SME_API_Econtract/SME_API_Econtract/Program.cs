@@ -1,10 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Quartz;
+using Serilog;
 using SME_API_Econtract.Entities;
 using SME_API_Econtract.Repository;
 using SME_API_Econtract.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
+// Configure Serilog
+builder.Host.UseSerilog((context, services, loggerConfiguration) => loggerConfiguration
+    .ReadFrom.Configuration(context.Configuration)
+    .WriteTo.File(
+        path: "Logs/app-log.txt",
+        rollingInterval: RollingInterval.Day,
+        outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}"
+    )
+    .MinimumLevel.Information() // เพิ่มการตั้งค่าระดับ Log ขั้นต่ำ
+);
 
 builder.Services.AddDbContext<Si_EcontractDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString")));
@@ -33,7 +44,19 @@ builder.Services.AddScoped<MProjectContractService>();
 builder.Services.AddScoped<IApiInformationRepository, ApiInformationRepository>();
 builder.Services.AddScoped<ICallAPIService, CallAPIService>(); // Register ICallAPIService with CallAPIService
 builder.Services.AddHttpClient<CallAPIService>();
-builder.Services.AddHostedService<JobSchedulerService>(); // Register the background service
+
+// Add Quartz.NET services
+builder.Services.AddQuartz(q =>
+{
+    //  q.UseMicrosoftDependencyInjectionScopedJobFactory();
+    q.AddJob<ScheduledJobPuller>(j => j.WithIdentity("ScheduledJobPuller").StoreDurably());
+});
+
+builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
+
+// Register your IHostedService to manage jobs
+builder.Services.AddHostedService<JobSchedulerService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
